@@ -1,0 +1,7 @@
+defaults:
+  - network: multiutae
+  - loss: focal
+  - optimizer: adamw
+  - lr_scheduler: warmup
+
+name: multiUTAE

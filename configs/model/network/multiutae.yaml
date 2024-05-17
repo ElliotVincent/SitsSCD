@@ -1,0 +1,16 @@
+instance:
+  _target_: models.networks.multiutae.MultiUTAE
+  input_dim: ${dataset.num_channels}
+  num_classes: ${dataset.num_classes}
+  in_features: 512
+  str_conv_k: 4
+  str_conv_s: 2
+  str_conv_p: 1
+  agg_mode: "att_group"
+  encoder_norm: "group"
+  n_head: 16
+  d_k: 4
+  pad_value: 0
+  padding_mode: "reflect"
+  T: 1000
+  offset: 10

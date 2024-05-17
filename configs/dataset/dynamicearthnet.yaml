@@ -1,0 +1,42 @@
+name: DynamicEarthNet
+global_batch_size: 8
+num_channels: 4
+num_classes: 6
+ignore_index: 6
+class_names: ["impervi", "agricult", "forest", "wetlands", "soil", "water"]
+
+train_dataset:
+  _partial_: true
+  _target_: data.data.DynamicEarthNet
+  path: ${data_dir}/DynamicEarthNet/
+  split: train
+  train_length: 6
+  date_aug_range: 2
+
+val_dataset_domain_shift:
+  _partial_: true
+  _target_: data.data.DynamicEarthNet
+  path: ${data_dir}/DynamicEarthNet/
+  split: val
+  domain_shift: true
+
+val_dataset_no_domain_shift:
+  _partial_: true
+  _target_: data.data.DynamicEarthNet
+  path: ${data_dir}/DynamicEarthNet/
+  split: val
+  domain_shift: false
+
+test_dataset_domain_shift:
+  _partial_: true
+  _target_: data.data.DynamicEarthNet
+  path: ${data_dir}/DynamicEarthNet/
+  split: test
+  domain_shift: true
+
+test_dataset_no_domain_shift:
+  _partial_: true
+  _target_: data.data.DynamicEarthNet
+  path: ${data_dir}/DynamicEarthNet/
+  split: test
+  domain_shift: false

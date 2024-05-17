@@ -1,0 +1,6 @@
+instance:
+  _target_: models.losses.Losses
+  mix: {
+    focal : 1.0,
+  }
+  ignore_index: ${dataset.ignore_index}

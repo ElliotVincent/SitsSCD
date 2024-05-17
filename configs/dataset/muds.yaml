@@ -1,0 +1,40 @@
+name: Muds
+global_batch_size: 8
+num_channels: 3
+num_classes: 2
+ignore_index: 2
+class_names: ["not building", "building"]
+
+train_dataset:
+  _partial_: true
+  _target_: data.data.Muds
+  path: ${data_dir}/Muds/
+  split: train
+  train_length: 6
+
+val_dataset_domain_shift:
+  _partial_: true
+  _target_: data.data.Muds
+  path: ${data_dir}/Muds/
+  split: val
+  domain_shift: true
+
+val_dataset_no_domain_shift:
+  _partial_: true
+  _target_: data.data.Muds
+  path: ${data_dir}/Muds/
+  split: val
+  domain_shift: false
+
+test_dataset_domain_shift:
+  _partial_: true
+  _target_: data.data.Muds
+  path: ${data_dir}/Muds/
+  split: test
+  domain_shift: true
+
+test_dataset_no_domain_shift:
+  _partial_: true
+  _target_: data.data.Muds
+  path: ${data_dir}/Muds/
+  split: test
