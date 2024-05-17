@@ -14,7 +14,11 @@ Satellite Image Time Series Semantic Change Detection: Novel Architecture and An
 Official PyTorch implementation of [**Satellite Image Time Series Semantic Change Detection: Novel Architecture and Analysis of Domain Shift**](https://github.com/ElliotVincent/SitsSCD).
 Check out our [**webpage**](https://imagine.enpc.fr/~elliot.vincent/) for other details!
 
-![alt text](https://github.com/ElliotVincent/SitsSCD/blob/main/sits_scd.png?raw=true)
+We tackle the satellite image time series semantic change detection (SITS-SCD) task with our multi-temporal version of the UTAE [3]. Our model is able to leverage
+long range temporal information and provides significant performance boost for this task compared to single- or bi-temporal SCD methods.
+We evaluate on DynamicEarthNet [1] and MUDS [2] datasets that exhibit global and multi-year coverage using the SCD metrics defined in [1].
+
+![alt text](https://github.com/ElliotVincent/SitsSCD/blob/main/sitsscd_teaser.png?raw=true)
 
 If you find this code useful, don't forget to <b>star the repo :star:</b>.
 
@@ -61,6 +65,17 @@ or not of spatial domain shift.
 python train.py dataset=<dynamiceathnet or muds> mode=<train or eval>
 ```
 
+## Citing
+
+```bibtex
+@article{vincent2024satellite,
+    title = {Satellite Image Time Series Semantic Change Detection: Novel Architecture and Analysis of Domain Shift},
+    author = {Vincent, Elliot and Ponce, Jean and Aubry, Mathieu},
+    journal = {arXiv},
+    year = {2024},
+  }
+```
+
 ## Bibliography
 
 [1] Adam Van Etten et al. *The multitemporal urban development spacenet dataset*. In Proceedings of the IEEE/CVF Conference
@@ -68,3 +83,6 @@ on Computer Vision and Pattern Recognition, pages 6398–6407, 2021.
 
 [2] Aysim Toker et al. *Dynamicearthnet: Daily multi-spectral satellite dataset for semantic change segmentation*.
 In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pages 21158–21167, 2022.
+
+[3] Vivien Sainte Fare Garnot et al. *Panoptic segmentation of satellite image time series with convolutional
+temporal attention networks*. In Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV), pages 4872–4881, 2021
