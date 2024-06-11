@@ -62,7 +62,7 @@ This implementation uses PyTorch, PyTorch Lightning and Hydra.
 For both datasets, there are two validation and two test loaders, to account for the presence
 or not of spatial domain shift. 
 ```
-python train.py dataset=<dynamiceathnet or muds> mode=<train or eval>
+python train.py dataset=<dynamicearthnet or muds> mode=<train or eval>
 ```
 
 ## Citing
