@@ -64,13 +64,16 @@ def project_init(cfg):
 
 def callback_init(cfg):
     monitor = cfg.checkpoints["monitor"]
-    cfg.checkpoints["monitor"] = monitor + "_0"
-    checkpoint_callback_0 = instantiate(cfg.checkpoints)
-    cfg.checkpoints["monitor"] = monitor + "_1"
-    checkpoint_callback_1 = instantiate(cfg.checkpoints)
+    filename = cfg.checkpoints["filename"]
+    cfg.checkpoints["monitor"] = monitor + "_out"
+    cfg.checkpoints["filename"] = filename + "_out"
+    checkpoint_callback_out = instantiate(cfg.checkpoints)
+    cfg.checkpoints["monitor"] = monitor + "_in"
+    cfg.checkpoints["filename"] = filename + "_in"
+    checkpoint_callback_in = instantiate(cfg.checkpoints)
     progress_bar = instantiate(cfg.progress_bar)
     lr_monitor = LearningRateMonitor()
-    callbacks = [checkpoint_callback_0, checkpoint_callback_1, progress_bar, lr_monitor]
+    callbacks = [checkpoint_callback_out, checkpoint_callback_in, progress_bar, lr_monitor]
     return callbacks
 
 
