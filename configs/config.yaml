@@ -56,7 +56,9 @@ checkpoints:
   save_last: True
   save_top_k: 1
   every_n_epochs: 1
-
+  mode: max
+  enable_version_counter: False
+  
 progress_bar:
   _target_: pytorch_lightning.callbacks.TQDMProgressBar
   refresh_rate: ${computer.progress_bar_refresh_rate}
