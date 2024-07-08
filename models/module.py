@@ -11,8 +11,9 @@ class SitsScdModel(L.LightningModule):
         self.model = instantiate(cfg.network.instance)
         self.loss = instantiate(cfg.loss.instance)
         self.ignore_index = self.loss.ignore_index
-        self.val_metrics = {0: instantiate(cfg.val_metrics), 1: instantiate(cfg.val_metrics)}
-        self.test_metrics = {0: instantiate(cfg.test_metrics), 1: instantiate(cfg.test_metrics)}
+        self.val_metrics = {'out': instantiate(cfg.val_metrics), 'in': instantiate(cfg.val_metrics)}
+        self.test_metrics = {'out': instantiate(cfg.test_metrics), 'in': instantiate(cfg.test_metrics)}
+        self.domain_dict = {0: 'out', 1: 'in'}
 
     def training_step(self, batch, batch_idx):
         pred = self.model(batch)
@@ -32,11 +33,11 @@ class SitsScdModel(L.LightningModule):
         pred = self.model(batch)
         pred["pred"] = torch.argmax(pred["logits"], dim=2)
         loss = self.loss(pred, batch, average=True)["loss"]
-        self.val_metrics[dataloader_idx].update(pred["pred"], batch["gt"])
+        self.val_metrics[self.domain_dict[dataloader_idx]].update(pred["pred"], batch["gt"])
         self.log("val/loss", loss, sync_dist=True, on_step=False, on_epoch=True)
 
     def on_validation_epoch_end(self):
-        for dataloader_idx in range(2):
+        for dataloader_idx in ['out', 'in']:
             metrics = self.val_metrics[dataloader_idx].compute()
             for metric_name, metric_value in metrics.items():
                 self.log(
@@ -51,10 +52,10 @@ class SitsScdModel(L.LightningModule):
     def test_step(self, batch, batch_idx, dataloader_idx):
         pred = self.model(batch)
         pred["pred"] = torch.argmax(pred["logits"], dim=2)
-        self.test_metrics[dataloader_idx].update(pred["pred"], batch["gt"])
+        self.test_metrics[self.domain_dict[dataloader_idx]].update(pred["pred"], batch["gt"])
 
     def on_test_epoch_end(self):
-        for dataloader_idx in range(2):
+        for dataloader_idx in ['out', 'in']:
             metrics = self.test_metrics[dataloader_idx].compute()
             for metric_name, metric_value in metrics.items():
                 self.log(
