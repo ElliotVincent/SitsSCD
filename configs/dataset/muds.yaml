@@ -10,30 +10,30 @@ train_dataset:
   _target_: data.data.Muds
   path: ${data_dir}/Muds/
   split: train
-  train_length: 6
+  train_length: 12
 
-val_dataset_domain_shift:
+val_dataset_out:
   _partial_: true
   _target_: data.data.Muds
   path: ${data_dir}/Muds/
   split: val
   domain_shift: true
 
-val_dataset_no_domain_shift:
+val_dataset_in:
   _partial_: true
   _target_: data.data.Muds
   path: ${data_dir}/Muds/
   split: val
   domain_shift: false
 
-test_dataset_domain_shift:
+test_dataset_out:
   _partial_: true
   _target_: data.data.Muds
   path: ${data_dir}/Muds/
   split: test
   domain_shift: true
 
-test_dataset_no_domain_shift:
+test_dataset_in:
   _partial_: true
   _target_: data.data.Muds
   path: ${data_dir}/Muds/
