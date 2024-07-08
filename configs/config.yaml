@@ -43,7 +43,7 @@ logger:
   _target_: pytorch_lightning.loggers.WandbLogger
   save_dir: ${root_dir}
   name: ${experiment_name}
-  project: sitsscduda
+  project: sitsscd
   log_model: False
   offline: False
   entity: imaginelab
@@ -51,8 +51,8 @@ logger:
 checkpoints:
   _target_: pytorch_lightning.callbacks.ModelCheckpoint
   dirpath: ${root_dir}/checkpoints/${experiment_name}
-  filename: 'epoch_{epoch}'
-  monitor: val/scs
+  filename: 'best_miou_ckpt'
+  monitor: val/miou
   save_last: True
   save_top_k: 1
   every_n_epochs: 1
@@ -61,7 +61,6 @@ progress_bar:
   _target_: pytorch_lightning.callbacks.TQDMProgressBar
   refresh_rate: ${computer.progress_bar_refresh_rate}
 
-aux_data: []
 data_dir: ${root_dir}/datasets
 root_dir:  ${hydra:runtime.cwd}
 experiment_name: ${dataset.name}_${model.name}
