@@ -20,10 +20,10 @@ model:
 datamodule:
   _target_: data.datamodule.ImageDataModule
   train_dataset: ${dataset.train_dataset}
-  val_dataset_domain_shift: ${dataset.val_dataset_domain_shift}
-  val_dataset_no_domain_shift: ${dataset.val_dataset_no_domain_shift}
-  test_dataset_domain_shift: ${dataset.test_dataset_domain_shift}
-  test_dataset_no_domain_shift: ${dataset.test_dataset_no_domain_shift}
+  val_dataset_out: ${dataset.val_dataset_out}
+  val_dataset_in: ${dataset.val_dataset_in}
+  test_dataset_out: ${dataset.test_dataset_out}
+  test_dataset_in: ${dataset.test_dataset_in}
   global_batch_size: ${dataset.global_batch_size}
   num_workers: ${computer.num_workers}
   num_nodes: ${computer.num_nodes}
