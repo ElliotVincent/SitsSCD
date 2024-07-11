@@ -11,8 +11,8 @@ Satellite Image Time Series Semantic Change Detection: Novel Architecture and An
 </h2>
 </div>
 
-Official PyTorch implementation of [**Satellite Image Time Series Semantic Change Detection: Novel Architecture and Analysis of Domain Shift**](https://github.com/ElliotVincent/SitsSCD).
-Check out our [**webpage**](https://imagine.enpc.fr/~elliot.vincent/) for other details!
+Official PyTorch implementation of [**Satellite Image Time Series Semantic Change Detection: Novel Architecture and Analysis of Domain Shift**](https://arxiv.org/abs/2407.07616).
+Check out our [**webpage**](https://imagine.enpc.fr/~elliot.vincent/sitsscd) for other details!
 
 We tackle the satellite image time series semantic change detection (SITS-SCD) task with our multi-temporal version of the UTAE [3]. Our model is able to leverage
 long range temporal information and provides significant performance boost for this task compared to single- or bi-temporal SCD methods.
